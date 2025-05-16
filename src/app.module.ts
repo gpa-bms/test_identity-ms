@@ -1,33 +1,15 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
-import { User } from './user/entity/user.entity';
+import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './identity/user/user.module';
+import { AuthModule } from './identity/auth/auth.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      envFilePath: ['.env.development'],
-      isGlobal: true,
-    }),
-    TypeOrmModule.forRoot({
-      type: 'mssql', 
-      host: 'localhost',
-      port: 1433, 
-      username: 'admin',
-      password: 'admin',
-      database: 'prueba4', 
-      entities: [User],
-      synchronize: true,
-      options: {
-        encrypt: false, 
-        trustServerCertificate: true, 
-      },
-    }),
-    UserModule,
-  ],
+  imports: [ConfigModule.forRoot({
+    envFilePath: ['.env.development'],
+    isGlobal: true
+  }), UserModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
