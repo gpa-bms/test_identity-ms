@@ -1,11 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, Generated } from "typeorm";
 
-@Entity({ name: 'Users', schema: 'Users', synchronize: false })
+@Entity({ name: 'user_detail', schema: 'dbo', synchronize: false })
 export class User {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn('increment')
+    id_user: number;
+
     @Column()
-    nombre: string;
+    name: string;
+
     @Column()
-    contraseña: string;
+    email: string;
+
+    @Column()
+    password: string;
 }

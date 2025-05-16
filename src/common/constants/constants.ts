@@ -1,8 +1,9 @@
 export enum RabbitMQ {
-    UserCola = 'users'
+    IdentityQueue = 'identity'
 }
 
-export enum UserMSG {
+export enum IdentityMSG {
     CREATE = 'CREATE_USER',
-    FIND_ALL = 'FIND_ALL_USER'
+    FIND_ALL = 'FIND_ALL_USER',
+    VALID_USER = 'VALID_USER',
 }

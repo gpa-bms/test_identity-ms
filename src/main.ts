@@ -8,7 +8,7 @@ async function bootstrap() {
     transport: Transport.RMQ,
     options: {
       urls: [process.env.AMQP_URL],
-      queue: RabbitMQ.UserCola
+      queue: RabbitMQ.IdentityQueue
     }
   });
   app.listen();
